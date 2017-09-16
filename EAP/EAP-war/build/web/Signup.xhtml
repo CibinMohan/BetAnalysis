@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CatchBet</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <br><h:commandButton value="Signup" action="Home"/></br>
+            <br>NAME    Check    :<h:inputText value="#{myBean.checkSignupDTO.username}" id="UID" />
+                    <h:commandButton value="Availability" >
+                        <f:ajax execute="UID" listener="#{myBean.checkAvail()}" render="SUBMIT"/>
+                    </h:commandButton>
+                <h:outputText value="#{myBean.availability}" id="SUBMIT" /></br>
+            <br></br>
+            <br>UserId    :<h:inputText value="#{myBean.signupDTO.userid}" /></br>
+            <br></br>
+            <br>NAME      :<h:inputText value="#{myBean.signupDTO.username}" /></br>
+            <br></br>
+            <br>PASSWORD    :<h:inputText value="#{myBean.signupDTO.password}" /></br>
+            <br></br>
+            <br>PHONE       :<h:inputText value="#{myBean.signupDTO.phone}" /></br>
+            <br></br>
+            <br>EMAIL       :<h:inputText value="#{myBean.signupDTO.email}" /></br>
+            <br></br>
+            <br>DEBIT CARD NO:<h:inputText value="#{myBean.signupDTO.cardid}" /></br>
+            <br></br>
+            <br>CARD BSB    :<h:inputText value="#{myBean.signupDTO.carddetails}" /></br>
+            <br></br>
+            <br><h:commandButton value="Signup" action="#{myBean.signup()}"/></br>
+        </h:form>
+    </h:body>
+</html>
+

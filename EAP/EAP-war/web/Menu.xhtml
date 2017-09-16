@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CatchBet Menu</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="VIEW BETS" action="#{myBean.listBetItems()}"/>
+            <h:commandButton value="MY ACCOUNT" action="UserDetails">
+                    
+                    </h:commandButton>
+
+            <h:commandButton value="ANALYSIS" action="#{myBean.analysisBet()}"/>
+            <h:commandButton value="LOGOUT" action="#{myBean.logout()}"/>
+            <br/>
+            <br/>
+            <h:dataTable id="DATA" value="#{myBean.listBet}" var="cart"> 
+                <h:column>
+                    <f:facet name="header">------Details------</f:facet>
+                    <h:outputText value=" #{cart.details}" id="cartName"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">--Team For Bet--</f:facet>
+                    <h:outputText value=" #{cart.team}" id="cartQuantity"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">--Team Versus--</f:facet>
+                    <h:outputText value="#{cart.vsteam}" id="cartPrice"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+                        <h:column>
+                    <f:facet name="header">----Date----</f:facet>
+                    <h:outputText value=" #{cart.date}" id="cartBalance"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="header">----Stake----</f:facet>
+                    <h:outputText value=" #{cart.betamo}" id="cartStake"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+               
+                    <h:column>
+                    <f:facet name="header">----Money----</f:facet>
+                    <h:inputText value="#{cart.money}" id="bn"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">BET</f:facet>
+                    <h:commandButton value="BET" action="#{myBean.addUserBet(cart.betid)}">
+                   </h:commandButton>
+                    <br/>               
+                    <br/>
+                </h:column>
+                    
+            
+            </h:dataTable>
+                      
+            MY BETS
+            <h:dataTable id="BET" value="#{myBean.cartList}" var="bet"> 
+                
+                <h:column>
+                    <f:facet name="header">---ID---</f:facet>
+                    <h:outputText value=" #{bet.betid}" id="betisd"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">------Details------</f:facet>
+                    <h:outputText value=" #{bet.details}" id="betDetails"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Team For Bet---</f:facet>
+                    <h:outputText value=" #{bet.team}" id="betTeam"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Bet Amount---</f:facet>
+                    <h:outputText value=" #{bet.betamo}" id="betAmound"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">----Bet Stake----</f:facet>
+                    <h:outputText value=" #{bet.stake}" id="betStake"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header"></f:facet>
+                    <h:commandButton value="REMOVE" action="#{myBean.removeFromList(bet.betid)}"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                
+            
+            </h:dataTable>
+        CONFIRM BET
+        <h:commandButton value="CONFIRM" action="#{myBean.confirmBet()}"/>
+        </h:form>
+    </h:body>
+</html>
+

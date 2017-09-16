@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CatchBet Menu</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="HOME" action="Menu"/>
+            <h:commandButton value="RECHARGE" action="Recharge"/>
+            <h:commandButton value="CLAIM BET" action="#{myBean.claimReward()}"/>
+            <h:commandButton value="LOGOUT" action="#{myBean.logout()}"/>
+            <br/>
+            <br/>
+            <div id="details">
+                <Br>NAME            :<h:outputText value="#{myBean.userDTO.username}"/></Br>
+                <Br>EMAIL           :<h:outputText value="#{myBean.userDTO.email}"/></Br>
+                <Br>PHONE           :<h:outputText value="#{myBean.userDTO.phone}"/></Br>
+                <Br>ACCOUNT BALANCE :<h:outputText value="#{myBean.userDTO.localac}"/></Br>
+                <br><h:commandButton value="VIEW MY BETS" action="#{myBean.findUserBet()}"/></br>
+            </div>     
+            <div id="bet">
+            MY BETS
+            <h:dataTable id="BET" value="#{myBean.userBet}" var="bet"> 
+                <h:column>
+                    <f:facet name="header">---ID---</f:facet>
+                    <h:outputText value=" #{bet.betid}" id="betisd"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Details---</f:facet>
+                    <h:outputText value=" #{bet.details}" id="betDetails"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Team---</f:facet>
+                    <h:outputText value=" #{bet.team}" id="betTeam"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Amount---</f:facet>
+                    <h:outputText value=" #{bet.betamo}" id="betAmound"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Stake---</f:facet>
+                    <h:outputText value=" #{bet.money}" id="betStake"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">--New Bet Amount--</f:facet>
+                    <h:inputText value="#{bet.money}" id="bn"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>  
+                <h:column>
+                    <f:facet name="header">---EDIT---</f:facet>
+                    <h:commandButton value="EDIT" action="#{myBean.editUsersBet(bet.betid)}"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">REMOVE</f:facet>
+                    <h:commandButton value="REMOVE" action="#{myBean.removeUsersBet(bet.betid)}"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>
+            
+            </h:dataTable>
+                CONFIRM BET
+            </div>     
+
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Shopping</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Shopping Cart
+            <div id="1">
+                <br> 
+                    
+                    <h:inputText value="#{myBean.name}" id="UID">
+                        <f:ajax listener="#{myBean.findProducts()}" execute="UID" event="keyup" render="listitem"/>
+                    </h:inputText>
+                    <h:selectOneListbox value="#{myBean.name}"  id="listitem">
+                        <f:selectItems id="listval" value="#{myBean.availableProducts}" var="p" itemValue="#{p.name}" itemLabel="#{p.name}">
+                            
+                        </f:selectItems>
+                        <f:ajax render="UID" event="click"/>
+                    </h:selectOneListbox>
+                    
+                </br>
+                <br>
+                    Quantity
+                    <h:inputText value="#{myBean.counts}" id="qty"/>
+                    <h:commandButton value="Add" action="#{myBean.addItem()}"/>
+                    
+                </br>
+                <br>
+                    Remove Item
+                    <h:inputText value="#{myBean.remove}"/>
+                    <h:commandButton value="Remove" action="#{myBean.removeItem()}"/>
+                    
+                </br>
+                
+                <br>
+                    Edit Item
+                    <h:inputText value="#{myBean.editName}"/>
+                    Quantity
+                    <h:inputText value="#{myBean.removeCount}"/>                   
+                    <h:commandButton value="Remove" action="#{myBean.editItem()}"/>
+                   
+                </br>
+                <font color="red" size="6" >Shopping cart</font> 
+                 
+                    <br>
+                         <h:outputText value="Name   Quantity  Price  Balance  "/>
+                    </br>
+                <h:dataTable id="DATA" value="#{myBean.cartItem}" var="cart"> 
+                <h:column>
+                    <f:facet name="newCart">Item</f:facet>
+                    <h:outputText value=" #{cart.name}" id="cartName"/>
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="newCart">quantity</f:facet>
+                        <h:outputText value=" #{cart.qty}" id="cartQuantity"/>
+                    <br/>               
+                    <br/>
+                </h:column>
+                <h:column>
+                    <f:facet name="newCart">Price</f:facet>
+                        <h:outputText value="#{cart.sellPrice}" id="cartPrice"/>
+                    <br/>               
+                    <br/>
+                </h:column>
+                    <h:column>
+                    <f:facet name="newCart">Remaining Item</f:facet>
+                        <h:outputText value=" #{cart.balance}" id="cartBalance"/>
+                    <br/>               
+                    <br/>
+                </h:column>
+                    
+
+            </h:dataTable>
+                <br>
+                Total price
+                <h:outputText value="#{myBean.total}"/>
+                </br>   
+                   
+            
+            </div>
+           
+            <div>
+                <br>
+                    <h:commandButton value="BUY" action="#{myBean.buyItem()}"/>
+                </br>
+                
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

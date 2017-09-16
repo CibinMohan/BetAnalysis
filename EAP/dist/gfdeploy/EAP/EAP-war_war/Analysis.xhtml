@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CatchBet Menu</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <br> 
+                <h:commandButton value="HOME" action="Menu"/>
+                <h:commandButton value="LOGOUT" action="#{myBean.logout()}"/>
+                <br/>
+                <br/>
+                <h:commandButton value="VIEW MATCHES" action="#{myBean.analysisBet()}"/>
+                FILTER BY TEAM <h:inputText value="#{myBean.analysisName}"/>
+                <h:commandButton value="FILTER" action="#{myBean.filterByTeam()}"/>
+                    
+                </br>
+                <br>
+                FIXTURES
+                <h:dataTable id="BET" value="#{myBean.analysisDTO}" var="bet"> 
+                <h:column>
+                    <f:facet name="header">---ID---</f:facet>
+                    <h:outputText value=" #{bet.analysisid}" id="betDetails"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Team---</f:facet>
+                    <h:outputText value=" #{bet.team}" id="betTeam"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header" >---Away Team---</f:facet>
+                    <h:outputText value=" #{bet.vsteam}" id="betAmound"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Date---</f:facet>
+                    <h:outputText value=" #{bet.date}" id="betStake"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Time---</f:facet>
+                    <h:outputText value=" #{bet.time}" id="betisd"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Previous Result---</f:facet>
+                    <h:outputText value=" #{bet.previousresult}" id="pRes"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                
+            
+            </h:dataTable>
+            </br>    
+            <br>
+            PREVIOUS MATCH 
+            </br>
+            <br>
+                <h:dataTable id="Prev" value="#{myBean.previousDTO}" var="bet"> 
+                <h:column>
+                    <f:facet name="header">---ID---</f:facet>
+                    <h:outputText value=" #{bet.analysisid}" id="betDetailsP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Team---</f:facet>
+                    <h:outputText value=" #{bet.team}" id="betTeamP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Away Team---</f:facet>
+                    <h:outputText value=" #{bet.vsteam}" id="betAmoundP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">----Date----</f:facet>
+                    <h:outputText value=" #{bet.date}" id="betStakeP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Time---</f:facet>
+                    <h:outputText value=" #{bet.time}" id="betisdP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                <h:column>
+                    <f:facet name="header">---Result---</f:facet>
+                    <h:outputText value=" #{bet.previousresult}" id="pResP"/>
+                    <h:outputText value=" " />
+                    <br/>               
+                    <br/>
+                </h:column>          
+                
+            
+            </h:dataTable>
+                
+            </br>
+
+        </h:form>
+    </h:body>
+</html>
+

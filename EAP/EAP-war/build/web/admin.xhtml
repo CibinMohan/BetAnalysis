@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Admin</title>
+    </h:head>
+    
+    <h:body>
+    <h:form>
+        <h:commandButton value="LOGOUT" action="#{myBean.logout()}"/>
+        <br/>
+        <br/>
+        CHANGE BET STATUS
+        <br/>
+        <br/>
+        Bet Id:<h:inputText value="#{myBean.adminBetDTO.betid}"/>
+        <br/>
+        <br/>
+        Bet Status:<h:inputText value="#{myBean.adminBetDTO.status}"/>
+        <br/>
+        <br/>
+        <h:commandButton value ="Change Status" action="#{myBean.betStatusUpdate()}"/>
+        <br/>
+        <br/>
+        ADD A MATCH FOR BET
+        <br/>
+        <br/>
+        BetId:<h:inputText value="#{myBean.adminBetDTO.betid}"/>
+        <br/>
+        <br/>
+        Bet Amount(eg.7:9):<h:inputText value="#{myBean.adminBetDTO.betamo}"/>
+        <br/>
+        <br/>
+        Bet Date(dd/mm/yyyy):<h:inputText value="#{myBean.adminBetDTO.date}"/>
+        <br/>
+        <br/>
+        Bet Details:<h:inputText value="#{myBean.adminBetDTO.details}"/>
+        <br/>
+        <br/>
+        Bet Team:<h:inputText value="#{myBean.adminBetDTO.team}"/>
+        <br/>
+        <br/>
+        Bet Time int:<h:inputText value="#{myBean.adminBetDTO.time}"/>
+        <br/>
+        <br/>
+        Bet AwayTeam:<h:inputText value="#{myBean.adminBetDTO.vsteam}"/>
+        <br/>
+        <br/>
+        <h:commandButton value="ADD" action="#{myBean.addNewBet()}"/>
+        </h:form>
+    </h:body>
+</html>
+
